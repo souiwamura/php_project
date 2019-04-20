@@ -19,6 +19,10 @@
                         <!-- ③表示文字列中の改行文字をbrタグで置き換える -->
                         {!! nl2br(e(str_limit($post->body, 200))) !!}
                     </p>
+                    
+                    <a calss="card-link" href="{{ route('posts.show', ['post' => $post]) }}">
+                        続きを読む
+                    </a>
                 </div>
                 <div class="card-footer">
                     <span class="mr-2">
