@@ -1,6 +1,11 @@
 @extends('posts.layout')
 
 @section('content')
+    <div class="mb-4">
+        <a href="{{ route('posts.create') }}" class="btn btn-primary">
+            投稿を新規作成する
+        </a>
+    </div>
     <div class="container mt-4">
         @foreach ($posts as $post)
             <div class="card mb-4">
@@ -9,6 +14,9 @@
                 </div>
                 <div class="card-body">
                     <p class="card-text">
+                        <!-- ①postモデルのbodyから200文字取得 -->
+                        <!-- ②取得した文字列を表示する ← eはechoの略 -->
+                        <!-- ③表示文字列中の改行文字をbrタグで置き換える -->
                         {!! nl2br(e(str_limit($post->body, 200))) !!}
                     </p>
                 </div>
