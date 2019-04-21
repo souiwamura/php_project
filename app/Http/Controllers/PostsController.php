@@ -36,7 +36,7 @@ class PostsController extends Controller
         return redirect()->route('top');
     }
     
-    // 投稿詳細表示のアクセス制御
+    // 投稿詳細ページのアクセス制御
     public function show($post_id)
     {
         $post = Post::findOrFail($post_id);
