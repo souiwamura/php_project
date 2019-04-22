@@ -30,7 +30,7 @@ class PostsController extends Controller
             'body' => 'required|max:2000',
         ]);
 
-        // データ登録（レスポンスparamに追加 DB登録ではない）
+        // データ登録（DB登録）
         Post::create($params);
 
         return redirect()->route('top');
