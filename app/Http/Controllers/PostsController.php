@@ -10,6 +10,7 @@ class PostsController extends Controller
     // ルートアクセスの制御
     public function index()
     {
+        // Postモデルに全データを取り込む(作成日の降順)
         $posts = Post::orderBy('created_at', 'desc')->get();
         
         return view('posts.index', ['posts' => $posts]);
