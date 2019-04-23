@@ -15,13 +15,13 @@ class PostsController extends Controller
         return view('posts.index', ['posts' => $posts]);
     }
     
-    // postsアクセスの制御
+    // 投稿ページへのアクセス制御
     public function create()
     {
         return view('posts.create');
     }
 
-    // createViewでの操作制御
+    // 投稿ページの登録制御
     public function store(Request $request)
     {
         // 入力チェック（タイトル:50文字 本文：2000文字まで）
