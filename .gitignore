@@ -4,6 +4,7 @@
 /storage/*.key
 /vendor
 .phpunit.result.cache
+tsRequest
 Homestead.json
 Homestead.yaml
 npm-debug.log
