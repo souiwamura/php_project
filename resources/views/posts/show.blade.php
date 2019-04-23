@@ -49,11 +49,10 @@
                       id="body"
                       name="body"
                       class="form-control {{ $errors->has('body') ? 'is-invalid' : '' }}"
-                      rows="4">
-                        {{ old('body') }}
-                    </textarea>
+                      rows="4">{{ old('body') }}</textarea>
                     @if ($errors->has('body'))
                         <div class="invalid-feedback">
+                            <!-- エラー表示 -->
                             {{ $errors->first('body') }}
                         </div>
                     @endif

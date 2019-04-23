@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Http\Requests\CreatePostsRequest;
 use App\Post;
 
 class PostsController extends Controller
@@ -23,13 +23,10 @@ class PostsController extends Controller
     }
 
     // 投稿ページの登録制御
-    public function store(Request $request)
+    public function store(CreatePostsRequest $request)
     {
-        // 入力チェック（タイトル:50文字 本文：2000文字まで）
-        $params = $request->validate([
-            'title' => 'required|max:50',
-            'body' => 'required|max:2000',
-        ]);
+        // 全入力値を取得
+        $params = $request->all();
 
         // データ登録（DB登録）
         Post::create($params);

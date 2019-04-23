@@ -3,19 +3,16 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\CreateCommentsRequest;
 use App\Post;
 
 class CommentsController extends Controller
 {
-    public function store(Request $request)
+    public function store(CreateCommentsRequest $request)
     {
-        // リクエストパラムの入力チェックと変数宣言
-        $params = $request->validate([
-            'post_id' => 'required|exists:posts,id',
-            'body' => 'required|max:2000',
-        ]);
+        // 全入力値を取得(hiddenも含めて)
+        $params = $request->all();
         
-        // 対象レコードの検索
         $post = Post::findOrFail($params['post_id']);
         $post->comments()->create($params);
 
