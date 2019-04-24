@@ -1,8 +1,8 @@
-@extends('posts.layout')
+@extends('layouts.postsLayout')
 
 @section('content')
     <div class="mb-4">
-        <a href="{{ route('posts.create') }}" class="btn btn-primary">
+        <a href="{{ route('posts.create') }}" class="btn btn-primary" style="margin-left:20; margin-top:10px;">
             投稿を新規作成する
         </a>
     </div>
@@ -19,10 +19,10 @@
                         <!-- ③表示文字列中の改行文字をbrタグで置き換える -->
                         {!! nl2br(e(str_limit($post->body, 200))) !!}
                     </p>
-                    
-                    <a calss="card-link" href="{{ route('posts.show', ['post' => $post]) }}">
+                    <a href="{{ route('posts.show', ['post' => $post]) }}" class="btn btn-primary" style="margin-left:20; margin-top:10px;">
                         続きを読む
                     </a>
+                    </form>
                 </div>
                 <div class="card-footer">
                     <span class="mr-2">

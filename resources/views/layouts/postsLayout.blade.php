@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html> -->
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -15,16 +15,25 @@
         href="{{ url('/') }}/css/bootstrap.min.css">
 </head>
 <body>
+    @auth
     <header class="navbar navbar-dark bg-dark">
         <div class="container">
             <a class="navbar-brand" href="{{ url('') }}">
                 Laravel BBS
             </a>
+            <a href="{{ route('top') }}" class="btn btn-primary" style="margin-left:20; margin-top:10px;">
+                Topへ戻る
+            </a>
+            </form>
         </div>
     </header>
 
     <div>
         @yield('content')
     </div>
+    @else
+        ログインしていません。<br/>
+        <a href="http://localhost:8000/">こちらからログインしてください。</a>
+    @endauth
 </body>
 </html>

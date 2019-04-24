@@ -1,4 +1,4 @@
-@extends('posts.layout')
+@extends('layouts.postsLayout')
 
 @section('content')
     <div class="container mt-4">
@@ -48,13 +48,7 @@
                     </div>
 
                     <div class="mt-5">
-                        <a class="btn btn-secondary" href="{{ route('top') }}">
-                            キャンセル
-                        </a>
-
-                        <button type="submit" class="btn btn-primary">
-                            投稿する
-                        </button>
+                        <input type="submit" class="btn btn-primary" value="投稿する" />
                     </div>
                 </fieldset>
             </form>

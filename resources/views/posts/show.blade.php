@@ -1,10 +1,10 @@
-@extends('posts.layout')
+@extends('layouts.postsLayout')
 
 @section('content')
     <div class="container mt-4">
         <div class="border p-4">
             <h1 class="card-header">
-                {{ $post->title }}
+                投稿のタイトル
             </h1>
             <div class="card-body">
                 <p class="card-text">
@@ -33,7 +33,6 @@
             </section>
             <form class="mb-4" method="POST" action="{{ route('comments.store') }}">
                 @csrf
-
                 <input
                     name="post_id"
                     type="hidden"
@@ -59,14 +58,9 @@
                 </div>
 
                 <div class="mt-4">
-                    <button type="submit" class="btn btn-primary">
-                        コメントする
-                    </button>
+                    <input type="submit" class="btn btn-primary" value="コメントする" />
                 </div>
             </form>
-            <a class="btn btn-primary" href="{{ route('top', ['post' => $post]) }}">
-                Topへ戻る
-            </a>
         </div>
     </div>
 @endsection
