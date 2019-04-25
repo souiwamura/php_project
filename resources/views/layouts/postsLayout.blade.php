@@ -16,17 +16,29 @@
 </head>
 <body>
     @auth
-    <header class="navbar navbar-dark bg-dark">
+    <div class="navbar-header navbar-dark bg-dark p-3">
         <div class="container">
-            <a class="navbar-brand" href="{{ url('') }}">
-                Laravel BBS
-            </a>
-            <a href="{{ route('top') }}" class="btn btn-primary" style="margin-left:20; margin-top:10px;">
-                Topへ戻る
-            </a>
-            </form>
+            <div class="row">
+                <div class="col-md-3">
+                    <a href="{{ url('') }}" class="navbar-brand">
+                        Laravel BBS &nbsp ようこそ{{ Auth::user()->name }}さん
+                    </a>
+                </div>
+                <div class="col-md-3 offset-md-6">
+                    <a href="{{ route('top') }}" class="btn btn-primary">
+                        Topへ戻る
+                    </a>
+                    <a href="#" class="btn btn-primary"
+                        onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                        ログアウト
+                    </a>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        @csrf
+                    </form>
+                </div>
+            </div>
         </div>
-    </header>
+    </div>
 
     <div>
         @yield('content')
