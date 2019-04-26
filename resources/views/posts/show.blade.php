@@ -31,7 +31,7 @@
                     <p>コメントはまだありません。</p>
                 @endforelse
             </section>
-            <form class="mb-4" method="POST" action="{{ route('comments.store') }}">
+            <form class="mb-4" method="POST" action="{{ route('comments') }}">
                 @csrf
                 <input
                     name="post_id"
