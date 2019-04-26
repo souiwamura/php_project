@@ -7,6 +7,11 @@ use App\Post;
 
 class PostsController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     // ルートアクセスの制御
     public function top()
     {

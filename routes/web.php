@@ -11,19 +11,18 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::post('/comments', 'CommentsController@store')->name('comments');
 
-Route::get('/top', 'PostsController@top')->name('top');
-
-Route::resource('posts', 'PostsController', ['only' => ['create', 'store', 'show']]); 
-Route::resource('comments', 'CommentsController', ['only' => ['store']]);
-
-// 認証がらみ
 Route::group(['middleware' => 'web'], function () {
 
+    // 認証がらみ(ログイン、ログアウト、PWリセット)
     Route::auth();
+    
+    Route::get('/', function () {
+        return view('welcome');
+    });
 
-    Route::get('/home', 'HomeController@index')->name('home');
+    Route::get('/top', 'PostsController@top')->name('top');
+    Route::resource('/posts', 'PostsController', ['only' => ['create', 'store', 'show']]); 
+
 });

@@ -16,10 +16,7 @@ class LoginController extends Controller
      */
     public function __construct()
     {
-        // 念のために現在のユーザが認証済みかの確認
-        if(Auth::check()) {
-           redirect('login');
-        }
+        $this->middleware('guest')->except('logout');
     }
 
     /*
