@@ -7,6 +7,11 @@ use App\Post;
 
 class CommentsController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function store(CreateCommentsRequest $request)
     {
         // 全入力値を取得(hiddenも含めて)
