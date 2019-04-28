@@ -30,7 +30,7 @@ class PostsController extends Controller
     // 投稿ページの登録制御
     public function store(CreatePostsRequest $request)
     {
-        // 全入力値を取得
+        // 全入力値を取得(requestパラムに対してはCreatePostsRequestで検証済み)
         $params = $request->all();
 
         // データ登録（DB登録）
@@ -47,5 +47,29 @@ class PostsController extends Controller
         return view('posts.show', [
             'post' => $post,
         ]);
+    }
+    
+    // 投稿編集ページのアクセス制御
+    public function edit($post_id)
+    {
+        $post = Post::findOrFail($post_id);
+        
+        return view('posts.edit', ['post' => $post,]);
+    }
+    
+    // 投稿編集ページの更新制御
+    // パラメータの方をCreatePostsRequestにすることで自前の検証付きリクエストを呼ぶ
+    public function update(CreatePostsRequest $request)
+    {
+        // 全入力値を取得(requestパラムに対してはCreatePostsRequestで検証済み)
+        $params = $request->all();
+        
+        // 更新対象有無チェック
+        $post = Post::findOrFail($params['post_id']);
+        
+        // 更新処理
+        $post->fill($params)->save();
+        
+        return redirect()->route('posts.show', ['post' => $post,]);
     }
 }

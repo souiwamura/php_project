@@ -97,7 +97,7 @@
                 @auth
                   Top
                 @else
-                  Login(アカウントがある人)
+                  Login
                 @endauth
                 リンクからはじめよう
                 <div class="title m-b-md">
