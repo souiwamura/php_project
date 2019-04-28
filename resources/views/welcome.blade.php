@@ -93,6 +93,13 @@
             @endif
 
             <div class="content">
+                右上の
+                @auth
+                  Top
+                @else
+                  Login(アカウントがある人)
+                @endauth
+                リンクからはじめよう
                 <div class="title m-b-md">
                     Laravel
                 </div>

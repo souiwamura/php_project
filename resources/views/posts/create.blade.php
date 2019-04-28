@@ -7,7 +7,7 @@
                 投稿の新規作成
             </h1>
 
-            <form method="POST" action="{{ route('posts.store') }}">
+            <form method="POST" action="{{ route('postsStore') }}">
                 @csrf
 
                 <fieldset class="mb-4">
