@@ -3,9 +3,23 @@
 @section('content')
     <div class="container mt-4">
         <div class="border p-4">
-            <h1 class="card-header">
+            <div class="h1 card-header">
+                投稿の詳細
+                <div class="mb-4 float-right text-right">
+                    <a class="btn btn-primary" href="{{ route('posts.edit', ['post' => $post]) }}">
+                        編集する
+                    </a>
+                </div>
+            </div>
+            <div class="h2 margin-top-10">
                 投稿のタイトル
-            </h1>
+            </div>
+            <div class="card-body">
+                {{ $post->title }}
+            </div>
+            <div class="h2">
+                本文
+            </div>
             <div class="card-body">
                 <p class="card-text">
                     <!-- 全文表示  str_limit()による制限なし -->
@@ -13,9 +27,9 @@
                 </p>
             </div>
             <section>
-                <h2 class="h5 card-footer">
+                <div class="h5 card-footer">
                     コメント
-                </h2>
+                </div>
 
                 @forelse($post->comments as $comment)
                     <div class="card-text">

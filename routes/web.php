@@ -13,6 +13,7 @@
 
 Route::post('/comments/store', 'CommentsController@store')->name('commentsStore');
 Route::post('/posts/store', 'PostsController@store')->name('postsStore');
+Route::post('/posts/update', 'PostsController@update')->name('postsUpdate');
 
 Route::group(['middleware' => 'web'], function () {
 
@@ -24,6 +25,6 @@ Route::group(['middleware' => 'web'], function () {
     });
 
     Route::get('/top', 'PostsController@top')->name('top');
-    Route::resource('/posts', 'PostsController', ['only' => ['create','show']]); 
+    Route::resource('/posts', 'PostsController', ['only' => ['create','show','edit']]);
 
 });
