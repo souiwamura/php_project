@@ -19,7 +19,7 @@ class CreatePostsRequest extends FormRequest
     }
 
     /**
-     * コメント投稿時の入力チェック
+     * 投稿作成ページの投稿時チェック
      *
      * @return チェック済入力値
      */

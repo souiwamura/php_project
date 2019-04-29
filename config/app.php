@@ -26,6 +26,7 @@ return [
     |
     */
 
+    // デフォルトのままにするがartisanコマンドでここを切り替えないと狙ったenvが読み込めない
     'env' => env('APP_ENV', 'production'),
 
     /*

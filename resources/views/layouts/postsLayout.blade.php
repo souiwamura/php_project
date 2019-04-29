@@ -25,15 +25,12 @@
                     </a>
                 </div>
                 <div class="col-md-3 offset-md-6">
-                    <a href="{{ route('top') }}" class="btn btn-primary">
+                    <a class="btn btn-primary offset-md-2" href="{{ route('top') }}">
                         Topへ戻る
                     </a>
-                    <a href="#" class="btn btn-primary"
-                        onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                        ログアウト
-                    </a>
-                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                    <form class="float-right" method="POST" action="{{ route('logout') }}">
                         @csrf
+                        <input type="submit" value="ログアウト" class="btn btn-primary" />
                     </form>
                 </div>
             </div>

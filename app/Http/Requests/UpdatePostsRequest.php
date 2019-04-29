@@ -4,11 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-/**
- * 継承するのはFormRequest、Requestではない
- *
- */
-class CreateCommentsRequest extends FormRequest
+class UpdatePostsRequest extends FormRequest
 {
     /**
      * 特に認証は必要ないのでtrueで素通り
@@ -19,15 +15,16 @@ class CreateCommentsRequest extends FormRequest
     }
 
     /**
-     * 投稿詳細ページのコメント登録時チェック
-     * 
+     * 投稿編集ページの編集時チェック
+     *
      * @return チェック済入力値
      */
     public function rules()
     {
         return [
-            'post_id' => 'required|exists:posts,id',
-            'body' => 'required|max:2000',
+            'post_id' => 'required', // nullはダメ
+            'title' => 'required|max:50', // nullはダメ 最大50文字
+            'body' => 'required|max:2000', // nullはダメ 最大2000文字
         ];
     }
 }

@@ -11,15 +11,25 @@
 |
 */
 
-Route::post('/comments/store', 'CommentsController@store')->name('commentsStore');
-Route::post('/posts/store', 'PostsController@store')->name('postsStore');
-Route::post('/posts/update', 'PostsController@update')->name('postsUpdate');
-
 Route::group(['middleware' => 'web'], function () {
 
-    // 認証がらみ(ログイン、ログアウト、PWリセット)
+    /*
+     * 認証がらみ(ログイン、ログアウト、PWリセット)
+     */
     Route::auth();
     
+    /*
+     * バック処理
+     */
+    Route::post('/comments/store', 'CommentsController@store')->name('commentsStore');
+    Route::post('/posts/store', 'PostsController@store')->name('postsStore');
+    Route::post('/posts/update', 'PostsController@update')->name('postsUpdate');
+    Route::post('/posts/destroy', 'PostsController@destroy')->name('postsDestroy');
+    
+    /*
+     * 画面遷移
+     */
+    // homeコントローラは使用しないためここで画面遷移させる
     Route::get('/', function () {
         return view('welcome');
     });
