@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\CreateCommentsRequest;
-use App\Post;
+use App\Service\CommentsService;
 
 class CommentsController extends Controller
 {
@@ -14,11 +14,10 @@ class CommentsController extends Controller
 
     public function store(CreateCommentsRequest $request)
     {
-        // 全入力値を取得(hiddenも含めて)
-        $params = $request->all();
+        $service = new CommentsService();
         
-        $post = Post::findOrFail($params['post_id']);
-        $post->comments()->create($params);
+        // サービス呼び出し
+        $post = $service->store($request);
 
         return redirect()->route('posts.show', ['post' => $post]);
     }
