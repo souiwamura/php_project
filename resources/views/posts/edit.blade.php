@@ -7,14 +7,8 @@
                 投稿の編集
             </div>
 
-            <form method="POST" action="{{ route('postsUpdate', ['post' => $post]) }}">
+            <form method="POST" action="{{ route('postsUpdate', ['post_id' => $post->id]) }}">
                 @csrf
-                <input
-                    name="post_id"
-                    type="hidden"
-                    value="{{ $post->id }}"
-                >
-
                 <fieldset class="mb-4">
                     <div class="form-group">
                         <label for="title">
@@ -57,9 +51,7 @@
                             キャンセル
                         </a>
 
-                        <button type="submit" class="btn btn-primary">
-                            更新する
-                        </button>
+                        <input type="submit" value="更新する" class="btn btn-primary" />
                     </div>
                 </fieldset>
             </form>

@@ -2,23 +2,33 @@
 
 @section('content')
     <div class="container mt-4">
-        <div class="border p-4">
-            <div class="h1 card-header">
-                投稿の詳細
-                <div class="mb-4 float-right text-right">
-                    <a class="btn btn-primary" href="{{ route('posts.edit', ['post' => $post]) }}">
-                        編集する
-                    </a>
+        <div class="border">
+            <div class="h5 card-header">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-3">
+                            投稿の詳細
+                        </div>
+                        <div class="col-md-3 offset-md-6">
+                            <a class="btn btn-primary offset-md-2" href="{{ route('posts.edit', ['post' => $post]) }}">
+                                編集する
+                            </a>
+                            <form class="float-right" method="POST" action="{{ route('postsDestroy', ['post' => $post]) }}">
+                                @csrf
+                                <input type="submit" value="削除する" class="btn btn-danger" />
+                            </form>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="h2 margin-top-10">
-                投稿のタイトル
+            <div class="h5">
+                【投稿のタイトル】
             </div>
             <div class="card-body">
                 {{ $post->title }}
             </div>
-            <div class="h2">
-                本文
+            <div class="h5">
+                【本文】
             </div>
             <div class="card-body">
                 <p class="card-text">
@@ -45,14 +55,8 @@
                     <p>コメントはまだありません。</p>
                 @endforelse
             </section>
-            <form class="mb-4" method="POST" action="{{ route('commentsStore') }}">
+            <form class="mb-4" method="POST" action="{{ route('commentsStore', ['post_id' => $post->id]) }}">
                 @csrf
-                <input
-                    name="post_id"
-                    type="hidden"
-                    value="{{ $post->id }}"
-                >
-
                 <div class="form-group">
                     <label for="body">
                         本文
@@ -71,7 +75,7 @@
                     @endif
                 </div>
 
-                <div class="mt-4">
+                <div>
                     <input type="submit" class="btn btn-primary" value="コメントする" />
                 </div>
             </form>
