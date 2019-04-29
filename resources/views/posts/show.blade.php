@@ -15,6 +15,7 @@
                             </a>
                             <form class="float-right" method="POST" action="{{ route('postsDestroy', ['post' => $post]) }}">
                                 @csrf
+                                <input type="hidden" name="post_id" value="{{ $post->id }}" />
                                 <input type="submit" value="削除する" class="btn btn-danger" />
                             </form>
                         </div>
