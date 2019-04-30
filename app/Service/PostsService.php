@@ -14,7 +14,7 @@ class PostsService
     public function top()
     {
         // Postモデルに全データを取り込む(作成日の降順)
-        $posts = Post::orderBy('created_at', 'desc')->get();
+        $posts = Post::with(['comments'])->orderBy('created_at', 'desc')->paginate(10);
 
         return $posts;
     }
