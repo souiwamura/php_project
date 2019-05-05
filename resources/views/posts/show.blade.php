@@ -44,9 +44,13 @@
 
                 @forelse($post->comments as $comment)
                     <div class="card-text">
-                        <time>
-                            {{ $comment->created_at->format('Y.m.d H:i') }}
-                        </time>
+                        【ユーザ名 : {{ $comment->create_user }}
+                        <span class="px-2">
+                            <time>
+                                コメント日時 : {{ $comment->created_at->format('Y.m.d H:i') }}
+                            </time>
+                        </span>
+                        】
                         <p>
                             <!-- 全文表示  str_limit()による制限なし -->
                             {!! nl2br(e($comment->body)) !!}
@@ -58,6 +62,16 @@
             </section>
             <form class="mb-4" method="POST" action="{{ route('commentsStore', ['post_id' => $post->id]) }}">
                 @csrf
+
+                <input type="hidden"
+                       id="create_user_id"
+                       name="create_user_id"
+                       value="{{ Auth::user()->id }}"/>
+                <input type="hidden"
+                       id="create_user"
+                       name="create_user"
+                       value="{{ Auth::user()->name }}"/>
+
                 <div class="form-group">
                     <label for="body">
                         本文

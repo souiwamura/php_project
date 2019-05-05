@@ -26,6 +26,8 @@ class CreateCommentsRequest extends FormRequest
     public function rules()
     {
         return [
+            'create_user' => 'required',
+            'create_user_id' => 'required',
             'post_id' => 'required|exists:posts,id',
             'body' => 'required|max:2000',
         ];

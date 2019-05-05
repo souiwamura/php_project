@@ -25,8 +25,11 @@
                     </form>
                 </div>
                 <div class="card-footer">
-                    <span class="mr-2">
-                        投稿日時 {{ $post->created_at->format('Y.m.d') }}
+                    <span>
+                       投稿者 : {{ $post->create_user }}
+                    </span>
+                    <span class="mr-2 px-2">
+                        投稿日 : {{ $post->created_at->format('Y.m.d') }}
                     </span>
 
                     @if ($post->comments->count())

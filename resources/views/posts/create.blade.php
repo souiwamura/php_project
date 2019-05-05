@@ -10,6 +10,16 @@
             <form method="POST" action="{{ route('postsStore') }}">
                 @csrf
 
+                <input type=hidden
+                       id="create_user_id"
+                       name="create_user_id"
+                       value="{{ Auth::user()->id }}" />
+                       
+                <input type=hidden
+                       id="create_user"
+                       name="create_user"
+                       value="{{ Auth::user()->name }}" />
+
                 <fieldset class="mb-4">
                     <div class="form-group">
                         <label for="title">
