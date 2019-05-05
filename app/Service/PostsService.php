@@ -13,8 +13,9 @@ class PostsService
     // ルートアクセスの制御の(返却値の型宣言が？ arrayで返っている)
     public function top()
     {
-        // Postモデルに全データを取り込む(作成日の降順)
-        $posts = Post::with(['comments'])->orderBy('created_at', 'desc')->paginate(10);
+        $posts = Post::with(['comments'])
+          ->orderBy('Posts.created_at', 'desc')
+          ->paginate(10);
 
         return $posts;
     }
@@ -27,7 +28,7 @@ class PostsService
 
         // データ登録(DB登録)
         \DB::transaction(function () use ($params) {
-            Post::create($params);
+           Post::create($params);
         });
     }
 

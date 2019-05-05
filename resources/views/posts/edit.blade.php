@@ -9,6 +9,7 @@
 
             <form method="POST" action="{{ route('postsUpdate', ['post_id' => $post->id]) }}">
                 @csrf
+
                 <fieldset class="mb-4">
                     <div class="form-group">
                         <label for="title">

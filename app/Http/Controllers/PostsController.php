@@ -6,6 +6,7 @@ use App\Service\PostsService;
 use App\Http\Requests\CreatePostsRequest;
 use App\Http\Requests\UpdatePostsRequest;
 use App\Http\Requests\DestroyPostsRequest;
+use App\Post;
 
 class PostsController extends Controller
 {
@@ -23,7 +24,9 @@ class PostsController extends Controller
     public function top()
     {
         // Postモデルに全データを取り込む(作成日の降順)
-        $posts = $this::$service->top();
+        $posts = Post::with('comments')
+            ->orderby('created_at', 'desc')
+            ->paginate(10);
 
         return view('posts.top', ['posts' => $posts]);
     }

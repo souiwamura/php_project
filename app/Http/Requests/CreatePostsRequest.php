@@ -26,6 +26,8 @@ class CreatePostsRequest extends FormRequest
     public function rules()
     {
         return [
+            'create_user_id' => 'required',
+            'create_user' => 'required',
             'title' => 'required|max:50',
             'body' => 'required|max:2000',
         ];
