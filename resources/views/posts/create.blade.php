@@ -1,4 +1,4 @@
-@extends('layouts.postsLayout')
+@extends('layouts.commonLayout')
 
 @section('content')
     <div class="container mt-4">

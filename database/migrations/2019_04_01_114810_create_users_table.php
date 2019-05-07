@@ -21,6 +21,9 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();
+// soft delete(˜_—íœ)‚Ì–¼Žc
+// laravel‚Ííœ“ú‚Å”»’è‚·‚é‚ç‚µ‚¢ user->all(); ¨ select * from users where deleted_at is not null;
+//            $table->softDeletes();
         });
     }
 

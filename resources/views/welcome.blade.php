@@ -82,9 +82,22 @@
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                             @csrf
                         </form>
+                        @if (Route::has('delete'))
+                            <a href="#" 
+                                onclick="event.preventDefault(); document.getElementById('delete-form').submit();">
+                                Delete
+                            </a>
+                            <form id="delete-form" action="{{ route('delete') }}" method="POST" style="display: none;">
+                                @csrf
+                                <input type="hidden"
+                                    id="user_id"
+                                    name="user_id"
+                                    value="{{ Auth::user()->id }}"
+                                    />
+                            </form>
+                        @endif
                     @else
                         <a href="{{ route('login') }}">Login</a>
-                        
                         @if (Route::has('register'))
                             <a href="{{ route('register') }}">Register</a>
                         @endif

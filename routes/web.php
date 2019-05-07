@@ -19,15 +19,16 @@ Route::group(['middleware' => 'web'], function () {
     Route::auth();
     
     /*
-     * バック処理
+     * バック処理(リダイレクト対象)
      */
     Route::post('/comments/store', 'CommentsController@store')->name('commentsStore');
     Route::post('/posts/store', 'PostsController@store')->name('postsStore');
     Route::post('/posts/update', 'PostsController@update')->name('postsUpdate');
     Route::post('/posts/destroy', 'PostsController@destroy')->name('postsDestroy');
-    
+    Route::post('/delete', 'Auth\DeleteController@delete')->name('delete');
+
     /*
-     * 画面遷移
+     * 画面遷移(view対象)
      */
     // homeコントローラは使用しないためここで画面遷移させる
     Route::get('/', function () {
@@ -35,6 +36,7 @@ Route::group(['middleware' => 'web'], function () {
     });
 
     Route::get('/top', 'PostsController@top')->name('top');
-    Route::resource('/posts', 'PostsController', ['only' => ['create','show','edit']]);
+    Route::get('/getTotal', 'TotalController@getTotal')->name('getTotal');
 
+    Route::resource('/posts', 'PostsController', ['only' => ['create','show','edit']]);
 });

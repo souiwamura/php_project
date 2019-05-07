@@ -16,17 +16,15 @@ class PostsController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
-	
+
         $this::$service = new PostsService();
     }
 
     // ルートアクセスの制御
     public function top()
     {
-        // Postモデルに全データを取り込む(作成日の降順)
-        $posts = Post::with('comments')
-            ->orderby('created_at', 'desc')
-            ->paginate(10);
+        // サービス呼び出す
+        $posts = $this::$service->top();
 
         return view('posts.top', ['posts' => $posts]);
     }

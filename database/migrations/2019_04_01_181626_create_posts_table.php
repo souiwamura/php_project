@@ -20,7 +20,6 @@ class CreatePostsTable extends Migration
             $table->unsignedBigInteger('create_user_id');
             $table->string('create_user');
             $table->timestamps();
-
         });
     }
 
