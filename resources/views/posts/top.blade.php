@@ -1,9 +1,15 @@
-@extends('layouts.postsLayout')
+@extends('layouts.commonLayout')
 
 @section('content')
-    <div class="mb-4">
-        <a href="{{ route('posts.create') }}" class="btn btn-primary" style="margin-left:20; margin-top:10px;">
-            投稿を新規作成する
+    <div class="mb-4 px-5 py-2">
+        <a href="{{ route('posts.create') }}" class="btn btn-primary">
+            投稿作成
+        </a>
+        <a href="{{ route('getTotal', [ 'scid' => 'getMt' ]) }}" class="btn btn-primary px-2">
+            月次集計
+        </a>
+        <a href="{{ route('getTotal', [ 'scid' => 'getYt' ]) }}" class="btn btn-primary px-2">
+            年次集計
         </a>
     </div>
     <div class="container mt-4">
@@ -19,7 +25,7 @@
                         <!-- ③表示文字列中の改行文字をbrタグで置き換える -->
                         {!! nl2br(e(str_limit($post->body, 200))) !!}
                     </p>
-                    <a href="{{ route('posts.show', ['post' => $post]) }}" class="btn btn-primary" style="margin-left:20; margin-top:10px;">
+                    <a href="{{ route('posts.show', ['post' => $post]) }}" class="btn btn-primary p-1" >
                         続きを読む
                     </a>
                     </form>
@@ -40,6 +46,8 @@
                 </div>
             </div>
         @endforeach
+        
+        <!-- ページャー -->
         <div class="d-flex justify-content-right mb-5">
             {{ $posts->links() }}
         </div>

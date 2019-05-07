@@ -14,6 +14,7 @@ class PostsService
     public function top()
     {
         $posts = Post::with(['comments'])
+          ->orderBy('Posts.id', 'desc')
           ->orderBy('Posts.created_at', 'desc')
           ->paginate(10);
 

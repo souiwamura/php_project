@@ -17,10 +17,10 @@ class CreateCommentsTable extends Migration
             $table->increments('id');
             $table->unsignedInteger('post_id');
             $table->text('body');
-            $table->timestamps();
             $table->unsignedBigInteger('create_user_id');
             $table->string('create_user');
-            
+            $table->timestamps();
+
             $table->foreign('post_id')->references('id')->on('posts');
         });
     }
