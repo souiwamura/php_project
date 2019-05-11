@@ -15,7 +15,6 @@ class PostsService
     {
         $posts = Post::with(['comments'])
           ->orderBy('Posts.id', 'desc')
-          ->orderBy('Posts.created_at', 'desc')
           ->paginate(10);
 
         return $posts;

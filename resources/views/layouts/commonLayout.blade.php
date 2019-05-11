@@ -1,4 +1,4 @@
-<!-- <!DOCTYPE html> -->
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <!-- レスポンシブル対応 ピンチには非対応 -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
-  
+
     <title>Laravel BBS</title>
 
     <!-- bootstrapフォルダ内では読み込めないため移動 変更対応容易にするためのローカル読み込み -->
@@ -21,7 +21,7 @@
             <div class="row">
                 <div class="col-md-3">
                     <a href="{{ url('') }}" class="navbar-brand">
-                        Laravel BBS &nbsp ようこそ{{ Auth::user()->name }}さん
+                        Laravel BBS &nbsp; ようこそ{{ Auth::user()->name }}さん
                     </a>
                 </div>
                 <div class="col-md-3 offset-md-6">
