@@ -12,7 +12,6 @@ order by created_at;
 yT‚²‚Æz`Œ»İ‚©‚ç¡“úŠÜ‚ß‚½è‘O‚V“úŠÔ(•t‚«Œ×‚¬‚à‰Â”\)
 select
  count(created_at) as week_count,
- date_format(created_at, '%Y%”N%m%Œ%d%“ú') as week
 from
  posts
 where

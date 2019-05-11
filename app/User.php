@@ -5,8 +5,10 @@ namespace App;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Database\Eloquent\SoftDeletes;
+// 論理削除
+// use Illuminate\Database\Eloquent\SoftDeletes;
 
+// modelを継承していないためかdb:seed時に設定してもリレーション失敗する
 class User extends Authenticatable
 {
     use Notifiable;
@@ -37,4 +39,10 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+    
+    // 論理削除
+    // use SoftDeletes;
+    
+    // protected $tables = 'Users';
+    // protected $dates = ['deleted_at'];
 }

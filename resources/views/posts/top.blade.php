@@ -2,15 +2,37 @@
 
 @section('content')
     <div class="mb-4 px-5 py-2">
-        <a href="{{ route('posts.create') }}" class="btn btn-primary">
+        <a href="{{ route('posts.create') }}" class="float-left btn btn-primary">
             投稿作成
         </a>
-        <a href="{{ route('getTotal', [ 'scid' => 'getMt' ]) }}" class="btn btn-primary px-2">
-            月次集計
-        </a>
-        <a href="{{ route('getTotal', [ 'scid' => 'getYt' ]) }}" class="btn btn-primary px-2">
-            年次集計
-        </a>
+        <form action="{{ route('getTotal') }}" method="POST" class="float-left mx-1">
+            @csrf
+            <input
+             type="hidden"
+             id="scid"
+             name="scid"
+             value="getMt" />
+            <input
+             type="hidden"
+             id="userId"
+             name="userId"
+             value="{{ Auth::user()->id }}" />
+            <input type="submit" class="btn btn-primary px-2" value="月次集計" />
+        </form>
+        <form action="{{ route('getTotal') }}" method="POST" class="mx-1">
+            @csrf
+            <input
+             type="hidden"
+             id="scid"
+             name="scid"
+             value="getWt" />
+            <input
+             type="hidden"
+             id="userId"
+             name="userId"
+             value="{{ Auth::user()->id }}" />
+            <input type="submit" class="btn btn-primary px-2" value="週次集計" />
+        </form>
     </div>
     <div class="container mt-4">
         @foreach ($posts as $post)
@@ -28,7 +50,6 @@
                     <a href="{{ route('posts.show', ['post' => $post]) }}" class="btn btn-primary p-1" >
                         続きを読む
                     </a>
-                    </form>
                 </div>
                 <div class="card-footer">
                     <span>

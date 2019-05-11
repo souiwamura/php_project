@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Service\TotalService;
-use Illuminate\Http\Request;
+//use Illuminate\Http\Request;
+use App\Http\Requests\GetTotalRequest;
 
 class TotalController extends Controller
 {
@@ -12,18 +13,17 @@ class TotalController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
-
         $this::$service = new TotalService();
     }
 
     // 集計機能取り纏め(試しに入れてみた)
-    public function getTotal(Request $request)
+    public function getTotal(GetTotalRequest $request)
     {
-
         $scid = $request->scid;
-        $dtTotal = $this::$service->getTotal($scid);
+        $userId = $request->userId;
+        $array = $this::$service->getTotal($scid, $userId);
 
-        return view('total.top', [ 'data' => $dtTotal ]);
+        return view('total.top',['array' => $array]);
     }
 }
 ?>

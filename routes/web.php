@@ -36,7 +36,7 @@ Route::group(['middleware' => 'web'], function () {
     });
 
     Route::get('/top', 'PostsController@top')->name('top');
-    Route::get('/getTotal', 'TotalController@getTotal')->name('getTotal');
+    Route::post('/getTotal', 'TotalController@getTotal')->name('getTotal');
 
     Route::resource('/posts', 'PostsController', ['only' => ['create','show','edit']]);
 });
