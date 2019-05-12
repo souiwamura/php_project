@@ -36,10 +36,8 @@
             @if (array_key_exists('message', $array))
                 {{ $array['message'] }}
             @else
-                <div style="position:relate;">
-                    <div id="postTotalColumn_div" style="width:1000px; height:500px;"></div>
-                    <?= $array['lava']->render('ColumnChart', 'postTotalColumn', 'postTotalColumn_div') ?>
-                </div>
+                <div id="postTotalColumn_div" style="width:1000px; height:500px;"></div>
+                <?= $array['chartInfo']->render('ColumnChart', 'postTotalColumn', 'postTotalColumn_div') ?>
             @endif
         @endif
     </div>
