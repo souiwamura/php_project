@@ -7,7 +7,7 @@ use Carbon\Carbon;
 use App\Dao\TotalDao;
 
 /**
- * 投稿数集計
+ * 投稿数集計(lavacharts使用：複合グラフは向かないみたい グラフ背景を透過できない)
  *
  * @auth s.i
  * @since 2019/05/11
@@ -48,7 +48,7 @@ class TotalService
         } else if($scid == 'getWt') {
             $datas = $this::$dao->getWtData($userId);
 
-            $chartTitle = '年次集計';
+            $chartTitle = '週次集計';
             $chgLavel = 'Week';
 
         }
@@ -56,9 +56,9 @@ class TotalService
         // データテーブル情報作成もしくはメッセージ作成
         if(isset($datas)) {
 
-            $lava = $this->getChartsInfo($datas, $chartTitle, $chgLavel);
+            $chartInfo = $this->getChartsInfo($datas, $chartTitle, $chgLavel);
 
-            $array['lava'] = $lava;
+            $array['chartInfo'] = $chartInfo;
 
         } else {
 
@@ -79,9 +79,9 @@ class TotalService
      */
     private function getChartsInfo($datas, $chartTitle, $chgLavel) {
 
-        $lava = new Lava;
+        $chartInfo = new Lava;
 
-        $result = $lava->DataTable();
+        $result = $chartInfo->DataTable();
 
         // カラム追加(空箱)～２個
         $result->addDateColumn($chgLavel)
@@ -97,7 +97,7 @@ class TotalService
         }
 
         // データテーブル情報作成(棒グラフ)
-        $lava->ColumnChart('postTotalColumn', $result
+        $chartInfo->ColumnChart('postTotalColumn', $result
             , [
                 'title' => $chartTitle,
                 'legend' => [
@@ -116,24 +116,6 @@ class TotalService
                 ],
             ]);
 
-        // データテーブル情報作成(折れ線グラフ) ← 使う場合は月次にまで表示しないようにすること
-//        $lava->LineChart('postTotalLine', $result
-//                        , [
-//                'legend' => [
-//                    'alignment' => 'center',
-//                ],
-//                'series' => [
-//                    'curveType' => 'function',
-//                ],
-//                'chartArea' => [
-//                    'width'  => 700,
-//                    'height' => 400,
-//                ],
-//                'colors' => [
-//                    'red',
-//                ],
-//            ]);
-
-        return $lava;
+        return $chartInfo;
     }
 }
