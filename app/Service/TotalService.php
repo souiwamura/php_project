@@ -55,7 +55,6 @@ class TotalService
 
         // データテーブル情報作成もしくはメッセージ作成
         if(isset($datas)) {
-
             $chartInfo = $this->getChartsInfo($datas, $chartTitle, $chgLavel);
 
             $array['chartInfo'] = $chartInfo;
