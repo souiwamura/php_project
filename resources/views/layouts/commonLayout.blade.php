@@ -5,7 +5,7 @@
     <!-- 今は大丈夫だけどEdgeでデザインが崩れるみたいなので対応 -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <!-- レスポンシブル対応 ピンチには非対応 -->
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=max-width, initial-scale=1">
 
     <title>Laravel BBS</title>
 
