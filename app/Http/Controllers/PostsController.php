@@ -11,20 +11,20 @@ use App\Post;
 class PostsController extends Controller
 {
 
-    static $service;
+    protected $service;
 
     public function __construct()
     {
         $this->middleware('auth');
 
-        $this::$service = new PostsService();
+        $this->service = new PostsService();
     }
 
     // ルートアクセスの制御
     public function top()
     {
         // サービス呼び出す
-        $posts = $this::$service->top();
+        $posts = $this->service->top();
 
         return view('posts.top', ['posts' => $posts]);
     }
@@ -39,7 +39,7 @@ class PostsController extends Controller
     public function store(CreatePostsRequest $request)
     {
         // サービス呼び出し
-        $this::$service->store($request);
+        $this->service->store($request);
 
         return redirect()->route('top');
     }
@@ -48,7 +48,7 @@ class PostsController extends Controller
     public function show($post_id)
     {
         // サービス呼び出し
-        $post = $this::$service->show($post_id);
+        $post = $this->service->show($post_id);
 
         return view('posts.show', ['post' => $post,]);
     }
@@ -57,7 +57,7 @@ class PostsController extends Controller
     public function edit($post_id)
     {
         // サービス呼び出し
-        $post = $this::$service->edit($post_id);
+        $post = $this->service->edit($post_id);
 
         return view('posts.edit', ['post' => $post,]);
     }
@@ -67,7 +67,7 @@ class PostsController extends Controller
     public function update(UpdatePostsRequest $request)
     {
         // サービス呼び出し
-        $post = $this::$service->update($request);
+        $post = $this->service->update($request);
         
         return redirect()->route('posts.show', ['post' => $post,]);
     }
@@ -76,7 +76,7 @@ class PostsController extends Controller
     public function destroy(DestroyPostsRequest $request)
     {
        // サービス呼び出し
-       $this::$service->destroy($request);
+       $this->service->destroy($request);
 
        return redirect()->route('top');
     }

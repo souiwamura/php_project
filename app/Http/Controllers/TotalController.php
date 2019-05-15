@@ -8,12 +8,12 @@ use App\Http\Requests\GetTotalRequest;
 
 class TotalController extends Controller
 {
-    static $service;
+    protected $service;
 
     public function __construct()
     {
         $this->middleware('auth');
-        $this::$service = new TotalService();
+        $this->service = new TotalService();
     }
 
     // 集計機能取り纏め(試しに入れてみた)
@@ -21,7 +21,7 @@ class TotalController extends Controller
     {
         $scid = $request->scid;
         $userId = $request->userId;
-        $array = $this::$service->getTotal($scid, $userId);
+        $array = $this->service->getTotal($scid, $userId);
 
         return view('total.top',['array' => $array]);
     }
