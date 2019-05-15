@@ -4,7 +4,8 @@
 /public/css
 /storage/*.key
 /vendor
-.env
+.env.env
+.env.prod
 .phpunit.result.cache
 tsRequest
 Homestead.json
