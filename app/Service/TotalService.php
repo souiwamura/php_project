@@ -16,7 +16,7 @@ use App\Dao\TotalDao;
 class TotalService
 {
 
-    public $dao;
+    protected $dao;
 
     public function __construct()
     {
