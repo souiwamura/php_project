@@ -16,11 +16,11 @@ use App\Dao\TotalDao;
 class TotalService
 {
 
-    static $dao;
+    public $dao;
 
     public function __construct()
     {
-        $this::$dao = new TotalDao;
+        $this->dao = new TotalDao;
     }
 
     /**
@@ -39,14 +39,14 @@ class TotalService
 
         // 各集計データ取得とラベル準備
         if($scid == 'getMt') {
-            $datas = $this::$dao->getMtData($userId);
+            $datas = $this->dao->getMtData($userId);
 
             $chartTitle = '月次集計';
             $chgLavel = 'Month';
             
 
         } else if($scid == 'getWt') {
-            $datas = $this::$dao->getWtData($userId);
+            $datas = $this->dao->getWtData($userId);
 
             $chartTitle = '週次集計';
             $chgLavel = 'Week';
