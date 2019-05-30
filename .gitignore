@@ -4,7 +4,9 @@
 /public/css
 /storage/*.key
 /vendor
-.env.env
+/bin
+/tests
+.env.dev
 .env.prod
 .phpunit.result.cache
 tsRequest
